@@ -1,3 +1,5 @@
+const { LEFT_ARROW, DOWN_ARROW } = require("./p5");
+
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
 var packageBody,ground
 const Engine = Matter.Engine;
@@ -15,7 +17,16 @@ function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
 	
+   if(keyCode === 	LEFT_ARROW){
+	   helicopterSprite.x=helicopterSprite.x-20;
+   }
 
+   Matter.Body.translate(packageBody,{x:-20,y:0})
+
+   if (keyCode === DOWN_ARROW){
+	   Matter.Body.setStatic(packageBody,false);
+   }
+	
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
